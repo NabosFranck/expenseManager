@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Frais;
+use App\Form\JustifType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -28,7 +32,8 @@ class Frais2CrudController extends AbstractCrudController
             NumberField::new('Trajet'),
             NumberField::new('Nuit'),
             NumberField::new('Repas'),
-            TextEditorField::new('Justificatifs'),
+            CollectionField::new('Justificatifs')
+                -> setEntryType(JustifType::class),
             AssociationField::new('commercial')
         ];
     }
