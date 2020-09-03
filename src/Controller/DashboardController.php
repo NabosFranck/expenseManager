@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Admin;
 use App\Entity\Frais;
+use App\Entity\Client;
 use App\Entity\Comptable;
 use App\Entity\Commercial;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,5 +48,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Comptables', 'fas fa-calculator', Comptable::class);
         yield MenuItem::linkToCrud('Commerciaux', 'fa fa-briefcase', Commercial::class);
         yield MenuItem::linkToCrud('Frais', 'fas fa-file-invoice-dollar', Frais::class);
+        yield MenuItem::linkToCrud('Client', 'far fa-address-card', Client::class);
     }
 }

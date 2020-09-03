@@ -29,7 +29,9 @@ class Frais2CrudController extends AbstractCrudController
             NumberField::new('Nuit'),
             NumberField::new('Repas'),
             TextEditorField::new('Justificatifs'),
-            AssociationField::new('commercial')
+            AssociationField::new('commercial'),
+            AssociationField::new('client')
+
         ];
     }
     
@@ -42,8 +44,8 @@ class Frais2CrudController extends AbstractCrudController
 
             // the Symfony Security permission needed to manage the entity
             // (none by default, so you can manage all instances of the entity)
-            ->setEntityPermission("ROLE_USER", "ROLE_ADMIN")
-            ->setEntityPermission("ROLE_ADMIN")
+            ->setEntityPermission("ROLE_USER")
+            
         ;
     }
 }

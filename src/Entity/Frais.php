@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Client;
 use App\Entity\Commercial;
-use App\Repository\CommercialRepository;
-use App\Repository\FraisRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FraisRepository;
+use App\Repository\CommercialRepository;
 
 /**
  * @ORM\Entity(repositoryClass=FraisRepository::class)
@@ -49,6 +50,14 @@ class Frais
      * @ORM\JoinColumn(nullable=true)
      */
     private $commercial;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="frais")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $client;
+
+    
 
     public function getId(): ?int
     {
@@ -126,6 +135,20 @@ class Frais
 
         return $this;
     }
+
+    public function getClient(): ?Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+  
     
  
 
