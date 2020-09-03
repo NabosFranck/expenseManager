@@ -30,7 +30,7 @@ class CommercialCrudController extends AbstractCrudController
             ->setEntityLabelInPlural('Commerciaux')
             // the Symfony Security permission needed to manage the entity
             // (none by default, so you can manage all instances of the entity)
-            ->setEntityPermission("ROLE_ADMIN", "ROLE_USER")
+            ->setEntityPermission("ROLE_USER")
         ;
     }
 

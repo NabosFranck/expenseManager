@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Frais;
 use App\Form\JustifType;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -36,7 +36,7 @@ class Frais2CrudController extends AbstractCrudController
             AssociationField::new('commercial'),
             AssociationField::new('client')];
         }
-        
+
 
 public function configureCrud(Crud $crud): Crud
     {
