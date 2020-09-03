@@ -7,6 +7,7 @@ use App\Entity\Commercial;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FraisRepository;
 use App\Repository\CommercialRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -58,11 +59,6 @@ class Frais
      */
     private $justificatifs;
 
-    
-   
-    
-
-    
 
     public function getId(): ?int
     {
@@ -154,7 +150,11 @@ class Frais
         return $this;
     }
 
-  
+    public function __toString()
+    {
+        return $this->id;
+
+    }
     
  
 
