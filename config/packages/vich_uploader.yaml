@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        frais_justificatifs:
+          uri_prefix: '%uploads_path%'
+          upload_destination: '%kernel.project_dir%/public%uploads_path%'

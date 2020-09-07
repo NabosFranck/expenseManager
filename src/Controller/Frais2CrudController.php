@@ -7,11 +7,15 @@ use App\Form\JustifType;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -32,10 +36,14 @@ class Frais2CrudController extends AbstractCrudController
             NumberField::new('Trajet'),
             NumberField::new('Nuit'),
             NumberField::new('Repas'),
-            TextEditorField::new('Justificatifs'),
             AssociationField::new('commercial'),
-            AssociationField::new('client')];
-        }
+            AssociationField::new('client'),
+            DateTimeField::new('createdAt'),
+            TextField::new('justificatifs')
+        ];
+
+       
+    }
 
 
 public function configureCrud(Crud $crud): Crud

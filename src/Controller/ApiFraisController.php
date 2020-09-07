@@ -13,8 +13,8 @@ class ApiFraisController extends AbstractController
     /**
      * @Route("/api/frais", name="api_frais", methods ={"GET"})
      */
-    public function index(FraisRepository $frais)
+    public function index(FraisRepository $fraisRepository)
     {
-        
+        return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
     }
 }

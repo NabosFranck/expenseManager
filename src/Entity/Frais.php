@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use DateTime;
 use App\Entity\Client;
+use DateTimeInterface;
 use App\Entity\Commercial;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FraisRepository;
+use Vich\UploaderBundle\Entity\File;
 use App\Repository\CommercialRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=FraisRepository::class)
@@ -19,46 +22,69 @@ class Frais
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("frais:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("frais:read")
+     * 
      */
     private $etat;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("frais:read")
      */
     private $trajet;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("frais:read")
      */
     private $nuit;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("frais:read")
      */
     private $repas;
 
     /**
      * @ORM\ManyToOne(targetEntity=Commercial::class, inversedBy="frais")
+     * @Groups("frais:read")
      * @ORM\JoinColumn(nullable=true)
      */
     private $commercial;
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="frais")
+     * @Groups("frais:read")
      * @ORM\JoinColumn(nullable=true)
      */
     private $client;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="string",length= 200)
      */
     private $justificatifs;
 
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    public function __construct(){
+        $this->createdAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
+    }
 
     public function getId(): ?int
     {
@@ -143,19 +169,35 @@ class Frais
         return $this->justificatifs;
     }
 
-    public function setJustificatifs($justificatifs): self
+    public function setJustificatifs(?string $justificatifs): self
     {
         $this->justificatifs = $justificatifs;
 
         return $this;
     }
 
-    public function __toString()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->id;
+        return $this->createdAt;
+    }
 
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
     
- 
-
 }
