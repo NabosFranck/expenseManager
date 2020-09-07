@@ -8,10 +8,9 @@ use DateTimeInterface;
 use App\Entity\Commercial;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FraisRepository;
-use Vich\UploaderBundle\Entity\File;
 use App\Repository\CommercialRepository;
+use App\Repository\ClientRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=FraisRepository::class)
@@ -66,18 +65,21 @@ class Frais
     private $client;
 
     /**
-     * @ORM\Column(type="string",length= 200)
+     * @ORM\Column(type="string")
+     * @Groups("frais:read")
      */
     private $justificatifs;
 
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("frais:read")
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("frais:read")
      */
     private $updatedAt;
 
@@ -164,7 +166,7 @@ class Frais
         return $this;
     }
 
-    public function getJustificatifs()
+    public function getJustificatifs(): ?string
     {
         return $this->justificatifs;
     }
@@ -199,5 +201,6 @@ class Frais
 
         return $this;
     }
+
     
 }

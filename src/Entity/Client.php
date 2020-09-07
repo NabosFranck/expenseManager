@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ClientRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\FraisRepository;
+use App\Repository\CommercialRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
@@ -31,11 +33,7 @@ class Client
      */
     private $frais;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adresse;
-
+    
     public function __construct()
     {
         $this->frais = new ArrayCollection();
@@ -88,20 +86,9 @@ class Client
 
         return $this;
     }
+   
     public function __toString()
     {
-        return $this->societe;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
+        return $this->id;
     }
 }

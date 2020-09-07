@@ -39,7 +39,7 @@ class Frais2CrudController extends AbstractCrudController
             AssociationField::new('commercial'),
             AssociationField::new('client'),
             DateTimeField::new('createdAt'),
-            TextField::new('justificatifs')
+            TextField::new('justificatifs'),
         ];
 
        
