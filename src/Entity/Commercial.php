@@ -6,12 +6,14 @@ use App\Entity\Frais;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommercialRepository;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @ORM\Entity(repositoryClass=CommercialRepository::class)
+ * @ApiResource
  */
 class Commercial implements UserInterface
 {
@@ -193,9 +195,11 @@ class Commercial implements UserInterface
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->nom.' '.$this->prenom;
-    }
+     public function __toString()
+     {
+         return $this->nom.' '.$this->prenom;
+     }
+
+
     
 }

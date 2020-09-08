@@ -41,8 +41,6 @@ class Frais2CrudController extends AbstractCrudController
             DateTimeField::new('createdAt'),
             TextField::new('justificatifs'),
         ];
-
-       
     }
 
 
@@ -50,9 +48,7 @@ public function configureCrud(Crud $crud): Crud
     {
         return $crud
             // the labels used to refer to this entity in titles, buttons, etc.
-            
             ->setEntityLabelInPlural('Frais')
-
             // the Symfony Security permission needed to manage the entity
             // (none by default, so you can manage all instances of the entity)
             ->setEntityPermission("ROLE_USER")

@@ -8,12 +8,14 @@ use DateTimeInterface;
 use App\Entity\Commercial;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FraisRepository;
-use App\Repository\CommercialRepository;
 use App\Repository\ClientRepository;
+use App\Repository\CommercialRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FraisRepository::class)
+ * @ApiResource
  */
 class Frais
 {

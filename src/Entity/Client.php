@@ -4,14 +4,16 @@ namespace App\Entity;
 
 use App\Entity\Frais;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ClientRepository;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use App\Repository\FraisRepository;
+use App\Repository\ClientRepository;
 use App\Repository\CommercialRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
+ * @ApiResource
  */
 class Client
 {
@@ -86,9 +88,9 @@ class Client
 
         return $this;
     }
-   
-    public function __toString()
-    {
-        return $this->id;
+
+    public function __toString(){
+       return $this->societe;
     }
+    
 }

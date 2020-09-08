@@ -23,8 +23,8 @@ class ApiFraisController extends AbstractController
     public function index(FraisRepository $fraisRepository)
 
     {
-        // return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
-        return $this->json($fraisRepository->find(25),200,[],['groups'=>'frais:read']);
+        dd($fraisRepository);
+        //  return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
     }
     
     /**
