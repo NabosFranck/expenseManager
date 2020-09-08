@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Frais;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Client;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Frais|null find($id, $lockMode = null, $lockVersion = null)
@@ -22,19 +23,16 @@ class FraisRepository extends ServiceEntityRepository
     // /**
     //  * @return Frais[] Returns an array of Frais objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    
+    //  public function totalFraisClient($total)
+    //  {
+    //     return $this->createQueryBuilder('f')
+    //         ->select(SUM ('f.trajet', 'f.nuit','f.repas'))
+    //         ->andWhere('f.id = c.id')
+    //         ->getQuery()
+    //         ->getOneOrNullResult();       
+    //  }
+    
 
     /*
     public function findOneBySomeField($value): ?Frais

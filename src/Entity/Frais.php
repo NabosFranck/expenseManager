@@ -85,6 +85,8 @@ class Frais
      */
     private $updatedAt;
 
+    
+
     public function __construct(){
         $this->createdAt = new \Datetime();
         $this->updatedAt = new \Datetime();
@@ -203,6 +205,10 @@ class Frais
 
         return $this;
     }
+
+    
+
+    
 
     
 }
