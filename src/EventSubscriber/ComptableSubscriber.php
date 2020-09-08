@@ -33,6 +33,4 @@ class ComptableSubscriber implements EventSubscriberInterface
         $hash= $this->passwordEncoder->encodePassword($entity, $entity->getPassword());
         $entity->setPassword($hash);
     }
-
-    
 }

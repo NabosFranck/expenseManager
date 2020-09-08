@@ -20,22 +20,12 @@ class ClientCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        $frais = AssociationField::new("frais");
-        $societe = TextField::new('societe');
-
-        if (Crud::PAGE_INDEX === $pageName) {
-
-                return [$frais,$societe];
-        }else if
-            (Crud::PAGE_EDIT === $pageName) {
-
-                return [$societe];
-        }else if
-            (Crud::PAGE_DETAIL === $pageName) {
-
-            return [$societe,$frais];
+        return [
+            AssociationField::new("frais")->OnlyOnDetail(),
+            TextField::new('societe')
+        ];
     }
-    }
+    
 
     public function configureCrud(Crud $crud): Crud
     {

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comptable;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ComptableCrudController extends AbstractCrudController
@@ -13,25 +14,19 @@ class ComptableCrudController extends AbstractCrudController
         return Comptable::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('password')->onlyWhenCreating(),
+            TextField::new('email')->onlyOnForms(),
+            TextField::new('nom'),
+            TextField::new('prenom')
         ];
     }
-    */
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            // the labels used to refer to this entity in titles, buttons, etc.
-            
             ->setEntityLabelInPlural('Comptables')
-
-            // the Symfony Security permission needed to manage the entity
-            // (none by default, so you can manage all instances of the entity)
             ->setEntityPermission("ROLE_ADMIN")
         ;
     }
