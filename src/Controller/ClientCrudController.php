@@ -46,9 +46,6 @@ class ClientCrudController extends AbstractCrudController
         ;
     }
 
-    // public function fraisAll(){
-    //     $total = $this->getDoctrine()->getRepository(Frais::class)->findAll();
-    //     dd($total);
-    // }
+    
 
 }
