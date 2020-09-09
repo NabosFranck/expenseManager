@@ -206,7 +206,9 @@ class Frais
         return $this;
     }
 
-    
+    public function __toString(){
+        return 'trajet : ' . $this->trajet .'€'. ' repas : ' . $this->repas. '€'. ' nuit : '. $this->nuit.'€';
+    }
 
     
 

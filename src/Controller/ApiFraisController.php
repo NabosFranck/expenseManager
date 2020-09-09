@@ -23,12 +23,13 @@ class ApiFraisController extends AbstractController
     public function index(FraisRepository $fraisRepository)
 
     {
-        dd($fraisRepository);
-        //  return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
+        // dd($fraisRepository);
+         return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
+        
     }
     
     /**
-     * @Route("/api/post", name="api_post_frais", methods ={"POST"})
+     * @Route("/api/frais", name="api_post_frais", methods ={"POST"})
      */
     public function create(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator ){
         $jsonRecu = $request->getContent();

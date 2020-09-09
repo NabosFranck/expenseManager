@@ -24,6 +24,7 @@ security:
                 entity:
                     class: App\Entity\Commercial
                     property: email
+        
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -52,9 +53,27 @@ security:
             provider: commercial_provider
             guard:
                 authenticators:
-                    - App\Security\Authenticator
+                     - App\Security\Authenticator
             logout:
                 path: app_logout
+        api:
+            pattern:   ^/api
+            stateless: true
+            provider: commercial_provider
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        login:
+            pattern:  ^/api/login
+            stateless: true
+            provider: commercial_provider
+            anonymous: true
+            json_login:
+                check_path:               /api/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+        
+        
         
                 # where to redirect after logout
                 # target: app_any_route
@@ -68,5 +87,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    # - { path: ^/api/login_check, roles: IS_AUTHENTICATED_FULLY}
+    #       - { path: ^/admin, roles: ROLE_ADMIN }
+    #       - { path: ^/profile, roles: ROLE_USER }
+    #       - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
