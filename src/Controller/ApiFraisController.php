@@ -23,10 +23,7 @@ class ApiFraisController extends AbstractController
      * @Route("/api/commercial/frais/{id}", name="api_read_frais_com", methods ={"GET"})
      */
     public function getComFrais($id,FraisRepository $fraisRepository ){
-        // $allFraisRepository = $this->getDoctrine()->getRepository(Frais :: class);
-        // $allFrais = $allFraisRepository->findBy(["commercial" => $id]);
-
-        // return new JsonResponse(['frais' => $allFrais], Response::HTTP_CREATED );
+       
         return $this->json($fraisRepository->findBy(["commercial" => $id]));
         
     }
