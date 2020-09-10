@@ -40,18 +40,5 @@ class SecurityController extends AbstractController
         throw new \LogicException();
     }
 
-    /**
-     * @Route(name="api_login", path="api/login_check")
-     * @return JsonResponse
-     */
-    public function api_login(): JsonResponse
-    {
-        $user = $this->getUser();
-
-        dd($user);
-        return new Response([
-            'email' => $user->getUsername(),
-            'roles' => $user->getRoles(),
-        ]);
-    }
+    
 }
