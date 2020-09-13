@@ -29,15 +29,12 @@ class ApiFraisController extends AbstractController
         
     }
 
-<<<<<<< HEAD
    
 
 
 
 
 
-=======
->>>>>>> 5cf9380136333b7cb1fa52a6905dd18e99cac516
     // /**
     //  * @Route("/api/frais", name="api_read_frais", methods ={"GET"})
     //  */
