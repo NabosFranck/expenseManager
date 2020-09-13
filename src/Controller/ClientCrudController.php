@@ -23,29 +23,18 @@ class ClientCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName ): iterable
     {
-        // $total = $this->getDoctrine()->getRepository(Frais::class)->findAll();
-        // $totalt = $this->clientRepository->totalFraisClient($total);
-       
         return [
             TextField::new('societe'),
             ArrayField::new("frais")
              ->hideOnForm(),
         ];
     }
-    
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            // the labels used to refer to this entity in titles, buttons, etc.
             ->setEntityLabelInPlural('Clients')
-            // the Symfony Security permission needed to manage the entity
-            // (none by default, so you can manage all instances of the entity)
             ->setEntityPermission("ROLE_USER")
-            
         ;
     }
-
-    
-
 }
