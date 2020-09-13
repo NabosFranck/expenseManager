@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Frais;
 use App\Repository\FraisRepository;
+use App\Repository\ClientRepository;
 use App\Repository\CommercialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 class ApiFraisController extends AbstractController
 {
     /**
-     * @Route("/api/commercial/frais/{id}", name="api_read_frais_com", methods ={"GET"})
+     * @Route("/apip/commercial/frais/{id}", name="api_read_frais_com", methods ={"GET"})
      */
     public function getComFrais($id,FraisRepository $fraisRepository ){
        
@@ -28,6 +29,7 @@ class ApiFraisController extends AbstractController
         
     }
 
+   
 
 
 
