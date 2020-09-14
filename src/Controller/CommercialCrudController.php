@@ -13,7 +13,6 @@ class CommercialCrudController extends AbstractCrudController
     {
         return Commercial::class;
     }
-
     
     public function configureFields(string $pageName): iterable
     {
@@ -33,5 +32,4 @@ class CommercialCrudController extends AbstractCrudController
             ->setPaginatorPageSize(5)
         ;
     }
-
 }

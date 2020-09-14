@@ -29,7 +29,5 @@ class CommercialFixtures extends Fixture
             $manager->persist($user);
             $manager->flush();
         }
-       
-    
     }
 }

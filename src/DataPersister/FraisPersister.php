@@ -27,11 +27,8 @@ class FraisPersister implements DataPersisterInterface
         $data->setCreatedAt(new \DateTime());
         $this->em->persist($data);
         $this->em->flush($data);
-
-
     }
 
     public function remove($data){
-
     }
 }
