@@ -20,8 +20,6 @@ class JWTListener
     {
         /** @var $user \AppBundle\Entity\Commercial */
         $user = $event->getUser();
-        
-
         // add new data
         $payload['id'] = $user->getId();
         $payload['username'] = $user->getUsername();

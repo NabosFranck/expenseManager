@@ -19,30 +19,4 @@ class FraisRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Frais::class);
     }
-
-    // /**
-    //  * @return Frais[] Returns an array of Frais objects
-    //  */
-    
-    //  public function totalFraisClient($total)
-    //  {
-    //     return $this->createQueryBuilder('f')
-    //         ->select(SUM ('f.trajet', 'f.nuit','f.repas'))
-    //         ->andWhere('f.id = c.id')
-    //         ->getQuery()
-    //         ->getOneOrNullResult();       
-    //  }
-    
-
-    /*
-    public function findOneBySomeField($value): ?Frais
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

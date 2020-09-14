@@ -72,7 +72,6 @@ class Client
             $this->frais[] = $frai;
             $frai->setClient($this);
         }
-
         return $this;
     }
 
@@ -85,7 +84,6 @@ class Client
                 $frai->setClient(null);
             }
         }
-
         return $this;
     }
 

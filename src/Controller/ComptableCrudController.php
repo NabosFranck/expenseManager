@@ -27,7 +27,6 @@ class ComptableCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural('Comptables')
-            ->setEntityPermission("ROLE_ADMIN")
-        ;
+            ->setEntityPermission("ROLE_ADMIN");
     }
 }

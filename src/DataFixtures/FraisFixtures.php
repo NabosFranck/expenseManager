@@ -17,12 +17,8 @@ class FraisFixtures extends Fixture
             $user->setTrajet(100);
             $user->setNuit(115);
             $user->setRepas(120);
-           
-           
             $manager->persist($user);
             $manager->flush();
         }
-       
-    
     }
 }

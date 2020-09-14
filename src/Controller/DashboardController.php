@@ -36,8 +36,7 @@ class DashboardController extends AbstractDashboardController
         return Crud::new()
             // this defines the pagination size for all CRUD controllers
             // (each CRUD controller can override this value if needed)
-            ->setPaginatorPageSize(10)
-        ;
+            ->setPaginatorPageSize(10);
     }
 
     public function configureMenuItems(): iterable

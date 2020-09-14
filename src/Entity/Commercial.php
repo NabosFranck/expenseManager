@@ -154,7 +154,6 @@ class Commercial implements UserInterface
             $this->frais[] = $frai;
             $frai->setCommercial($this);
         }
-
         return $this;
     }
 
@@ -179,7 +178,6 @@ class Commercial implements UserInterface
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -191,15 +189,12 @@ class Commercial implements UserInterface
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
      public function __toString()
-     {
+    {
          return $this->nom.' '.$this->prenom;
-     }
+    }
 
-
-    
 }

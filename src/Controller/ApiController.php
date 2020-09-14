@@ -18,13 +18,12 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Exception\NotEncodableValueException;
 
-class ApiFraisController extends AbstractController
+class ApiController extends AbstractController
 {
     /**
      * @Route("/apip/commercial/frais/{id}", name="api_read_frais_com", methods ={"GET"})
      */
     public function getComFrais($id,FraisRepository $fraisRepository ){
-
         
        $frais = $fraisRepository->findBy(["commercial" => $id]);
        $TabFrais = [];
@@ -40,44 +39,24 @@ class ApiFraisController extends AbstractController
                 "nomclient" => $frai->getClient()->getSociete(),
             ];
         }
-         return new JsonResponse (["Frais" =>$TabFrais]);
-        
+        return new JsonResponse (["Frais" =>$TabFrais]);
     }
-
-   
-
-
-
-
 
     /**
      * @Route("/apip/clients", name="api_read_client", methods ={"GET"})
      */
     public function index(ClientRepository $clientRepository){
-
         
         $clients = $clientRepository->findAll();
         $TabClient = [];
-         foreach ($clients as $client){
-             $TabClient[] = (object)[
+        foreach ($clients as $client){
+            $TabClient[] = (object)[
                  
-                 "societe" => $client->getSociete(),
-                 "id" => $client->getId(),
+                "societe" => $client->getSociete(),
+                "id" => $client->getId(),
                  
-             ];
-         }
+            ];
+        }
           return new JsonResponse (["Client" =>$TabClient]);
-         
-     }
-
-    // /**
-    //  * @Route("/apip/clients/{id}", name="api_read_client_frais", methods ={"GET"})
-    //  */
-    // public function getSociete($id,ClientRepository $clientRepository ){
-       
-    //     return $this->json($clientRepository->findBy(["client" => $id]));
-        
-    // }
-
-    
+    }
 }

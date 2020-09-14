@@ -25,8 +25,7 @@ class ClientCrudController extends AbstractCrudController
     {
         return [
             TextField::new('societe'),
-            ArrayField::new("frais")
-             ->hideOnForm(),
+            ArrayField::new("frais")->hideOnForm(),
         ];
     }
 
@@ -34,7 +33,6 @@ class ClientCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural('Clients')
-            ->setEntityPermission("ROLE_USER")
-        ;
+            ->setEntityPermission("ROLE_USER");
     }
 }
