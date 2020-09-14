@@ -27,7 +27,6 @@ class ApiFraisController extends AbstractController
 
         
        $frais = $fraisRepository->findBy(["commercial" => $id]);
-       dd($frais);
        $TabFrais = [];
         foreach ($frais as $frai){
             $TabFrais[] = (object)[
@@ -45,23 +44,16 @@ class ApiFraisController extends AbstractController
         
     }
 
-<<<<<<< HEAD
-    /**
-     * @Route("/apip/clients", name="api_read_client", methods ={"GET"})
-     */
-    public function getComClient(ClientRepository $clientRepository ){
-=======
    
 
 
 
 
 
-    // /**
-    //  * @Route("/api/frais", name="api_read_frais", methods ={"GET"})
-    //  */
-    // public function index(FraisRepository $fraisRepository)
->>>>>>> 8a06bd7bfeb0177b17f0f89be9ee6d35fe55de31
+    /**
+     * @Route("/api/frais", name="api_read_frais", methods ={"GET"})
+     */
+    public function index(FraisRepository $fraisRepository){
 
         
         $clients = $clientRepository->findAll();
