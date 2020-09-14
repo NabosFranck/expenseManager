@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Frais;
 use App\Repository\FraisRepository;
+use App\Repository\ClientRepository;
 use App\Repository\CommercialRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,48 +24,55 @@ class ApiFraisController extends AbstractController
      * @Route("/apip/commercial/frais/{id}", name="api_read_frais_com", methods ={"GET"})
      */
     public function getComFrais($id,FraisRepository $fraisRepository ){
-       
-        return $this->json($fraisRepository->findBy(["commercial" => $id]));
+
+        
+       $frais = $fraisRepository->findBy(["commercial" => $id]);
+       dd($frais);
+       $TabFrais = [];
+        foreach ($frais as $frai){
+            $TabFrais[] = (object)[
+                
+                "id" => $frai->getId(),
+                "etat"=> $frai->getEtat(),
+                "trajet" => $frai->getTrajet(),
+                "repas" => $frai->getRepas(),
+                "nuit" => $frai->getNuit(),
+                "idclient"=> $frai->getClient()->getId(),
+                "nomclient" => $frai->getClient()->getSociete(),
+            ];
+        }
+         return new JsonResponse (["Frais" =>$TabFrais]);
         
     }
 
-    // /**
-    //  * @Route("/api/frais", name="api_read_frais", methods ={"GET"})
-    //  */
-    // public function index(FraisRepository $fraisRepository)
+    /**
+     * @Route("/apip/clients", name="api_read_client", methods ={"GET"})
+     */
+    public function getComClient(ClientRepository $clientRepository ){
 
-    // {
-    //     // dd($fraisRepository);
-    //      return $this->json($fraisRepository->findAll() ,200 ,[] ,['groups'=>'frais:read']);
+        
+        $clients = $clientRepository->findAll();
+        $TabClient = [];
+         foreach ($clients as $client){
+             $TabClient[] = (object)[
+                 
+                 "societe" => $client->getSociete(),
+                 "id" => $client->getId(),
+                 
+             ];
+         }
+          return new JsonResponse (["Client" =>$TabClient]);
+         
+     }
+
+    // /**
+    //  * @Route("/apip/clients/{id}", name="api_read_client_frais", methods ={"GET"})
+    //  */
+    // public function getSociete($id,ClientRepository $clientRepository ){
+       
+    //     return $this->json($clientRepository->findBy(["client" => $id]));
         
     // }
+
     
-    // /**
-    //  * @Route("/api/frais", name="api_post_frais", methods ={"POST"})
-    //  */
-    // public function create(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator ){
-    //     $jsonRecu = $request->getContent();
-    //     try {$frais = $serializer->deserialize($jsonRecu, Frais::class, 'json');
-    //         $frais->setCreatedAt(new \DateTime());
-
-    //         $errors = $validator->validate($frais);
-
-    //         if(count($errors )>0){
-    //             return $this->json($errors,'400');
-    //         };
-
-    //         $em->persist($frais);
-    //         $em->flush();
-    //         return $this->json($frais, 201, [],['groups'=>'frais:read']);
-    //     }
-
-    //     catch(NotEncodableValueException $e){
-
-    //         return $this->json([
-    //             'status'=> 400,
-    //             'message' => $e->getMessage()
-    //         ],400);
-    //     }
-        
-    // }
 }
