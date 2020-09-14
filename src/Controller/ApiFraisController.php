@@ -51,9 +51,9 @@ class ApiFraisController extends AbstractController
 
 
     /**
-     * @Route("/api/frais", name="api_read_frais", methods ={"GET"})
+     * @Route("/apip/clients", name="api_read_client", methods ={"GET"})
      */
-    public function index(FraisRepository $fraisRepository){
+    public function index(ClientRepository $clientRepository){
 
         
         $clients = $clientRepository->findAll();
