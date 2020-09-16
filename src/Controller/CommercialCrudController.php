@@ -28,7 +28,7 @@ class CommercialCrudController extends AbstractCrudController
     {
         return $crud
             ->setEntityLabelInPlural('Commerciaux')
-            ->setEntityPermission("ROLE_USER")
-            ->setPaginatorPageSize(5);
+            ->setEntityPermission("ROLE_USER");
+            
     }
 }

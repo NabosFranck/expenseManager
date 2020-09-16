@@ -30,7 +30,7 @@ class Client
     private $societe;
 
     /**
-     * @ORM\OneToMany(targetEntity=Frais::class, mappedBy="client")
+     * @ORM\OneToMany(targetEntity=Frais::class, mappedBy="client", cascade={"remove"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $frais;

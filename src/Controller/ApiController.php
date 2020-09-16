@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use DateTime;
 use App\Entity\Frais;
+use App\Entity\Client;
 use App\Repository\FraisRepository;
 use App\Repository\ClientRepository;
 use App\Repository\CommercialRepository;
@@ -58,5 +59,32 @@ class ApiController extends AbstractController
             ];
         }
           return new JsonResponse (["Client" =>$TabClient]);
+    }
+
+    /**
+     * @Route("/apip/clients", name="api_create_client", methods ={"POST"})
+     */
+    public function create(ClientRepository $clientRepository, Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator){
+        
+        
+        $jsonRecu = $request->getContent();
+        try{
+            $client = $serializer->deserialize($jsonRecu, Client::class, 'json');
+            
+            $errors = $validator->validate($client);
+            if(count($errors)>0){
+                return $this->json($errors,400);
+            }
+            $em->persist($client);
+            $em->flush();
+            
+
+        }catch(NotEncodableValueException $e){
+            
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ],400);
+        }
     }
 }
