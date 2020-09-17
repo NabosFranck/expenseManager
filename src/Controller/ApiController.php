@@ -64,7 +64,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/apip/clients", name="api_create_client", methods ={"POST"})
      */
-    public function create(ClientRepository $clientRepository, Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator){
+    public function createClient(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator){
         
         
         $jsonRecu = $request->getContent();
@@ -76,6 +76,33 @@ class ApiController extends AbstractController
                 return $this->json($errors,400);
             }
             $em->persist($client);
+            $em->flush();
+            
+
+        }catch(NotEncodableValueException $e){
+            
+            return $this->json([
+                'status' => 400,
+                'message' => $e->getMessage()
+            ],400);
+        }
+    }
+
+     /**
+     * @Route("/apip/frais", name="api_create_frais", methods ={"POST"})
+     */
+    public function createFrais( Request $request, SerializerInterface $serializer, EntityManagerInterface $em, ValidatorInterface $validator){
+        
+        
+        $jsonRecu = $request->getContent();
+        try{
+            $frais = $serializer->deserialize($jsonRecu, Frais::class, 'json');
+            
+            $errors = $validator->validate($frais);
+            if(count($errors)>0){
+                return $this->json($errors,400);
+            }
+            $em->persist($frais);
             $em->flush();
             
 

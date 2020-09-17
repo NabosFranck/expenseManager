@@ -1,6 +1,6 @@
 <?php
 
-// /src/AppBundle/Event/Listener/JWTCreatedListener.php
+// App/EventListener/JWTListener.php
 
 namespace App\EventListener;
 
@@ -18,7 +18,7 @@ class JWTListener
      */
     public function onJWTCreated(JWTCreatedEvent $event)
     {
-        /** @var $user \AppBundle\Entity\Commercial */
+        /** @var $user \App\Entity\Commercial */
         $user = $event->getUser();
         // add new data
         $payload['id'] = $user->getId();

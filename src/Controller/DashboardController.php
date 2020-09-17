@@ -7,6 +7,7 @@ use App\Entity\Frais;
 use App\Entity\Client;
 use App\Entity\Comptable;
 use App\Entity\Commercial;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
